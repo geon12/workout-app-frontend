@@ -8,7 +8,7 @@ function WorkoutCard({workout}) {
                 <div className="card-body">
                     <h5 className="card-title">{workout.name}</h5>
                     <p className="card-text">{workout.description}.</p>
-                    
+                    <button onClick={null} className="btn btn-primary">Delete</button>
                 </div>
             </div>
             
