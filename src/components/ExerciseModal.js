@@ -2,7 +2,7 @@ import React from "react"
 import ExerciseForm from "./ExerciseForm"
 import './ExerciseModal.css'
 import VideoEmbed from "./VideoEmbed"
-function ExerciseModal({exercise,showModal,closeModal,handleEditExercise}) {
+function ExerciseModal({exercise,closeModal,handleEditExercise}) {
 
     return (
         <div className="modal show" tabIndex="-1">
@@ -17,6 +17,7 @@ function ExerciseModal({exercise,showModal,closeModal,handleEditExercise}) {
                     <VideoEmbed youtubeLink={exercise.video}/>
                 </div>
                 <div className="modal-footer">
+                    <h6 className="modal-subtitle">Edit Exercise</h6>
                     <ExerciseForm exercise={exercise} onSubmit={handleEditExercise}/>
                     <button type="button" onClick={closeModal} className="btn btn-secondary">Close</button>
                 </div>
