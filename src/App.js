@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import ExerciseContainer from './components/ExerciseContainer';
 import Home from './components/Home';
 
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <div>
       <Home />
+      <ExerciseContainer exercises={exercises}/>
     </div>
   );
 }
