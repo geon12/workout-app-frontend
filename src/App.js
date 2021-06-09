@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import ExerciseContainer from './components/exerciseComponents/ExerciseContainer';
 import Home from './components/Home';
+import WorkoutContainer from './components/workoutComponents/WorkoutContainer';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <div>
       <Home />
       <ExerciseContainer exercises={exercises} setExercises={setExercises}/>
+      <WorkoutContainer />
     </div>
   );
 }
