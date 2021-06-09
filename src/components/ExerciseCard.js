@@ -22,7 +22,8 @@ function ExerciseCard({exercise,handleEditExercise}) {
                     
                 </div>
             </div>
-            <ExerciseModal exercise={exercise} showModal={showModal} closeModal={closeModal} handleEditExercise={handleEditExercise}/>
+            
+            {showModal ? <ExerciseModal exercise={exercise} closeModal={closeModal} handleEditExercise={handleEditExercise}/> : null}
         </div>
     )
 }

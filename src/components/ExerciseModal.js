@@ -5,7 +5,7 @@ import VideoEmbed from "./VideoEmbed"
 function ExerciseModal({exercise,showModal,closeModal,handleEditExercise}) {
 
     return (
-        <div className={`modal ${showModal ? "show" : "hide"}`} tabIndex="-1">
+        <div className="modal show" tabIndex="-1">
             <div className="modal-dialog">
                 <div className="modal-content">
                 <div className="modal-header">
