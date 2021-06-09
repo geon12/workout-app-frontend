@@ -3,7 +3,15 @@ import {useState} from "react"
 
 function ExerciseForm({exercise,onSubmit}) {
 
-    const initialState = {
+    const initialState =  exercise ? {
+
+        name: exercise.name,
+        description: exercise.description,
+        video: exercise.video,
+        type: exercise.type
+    } :
+
+    {
         name: "",
         description: "",
         video: "",
@@ -11,7 +19,7 @@ function ExerciseForm({exercise,onSubmit}) {
     }
 
     const [formData, setFormData] = useState(initialState)
-    
+
     function handleChange(event) {
         const name = event.target.name
         let value = event.target.value
@@ -28,7 +36,7 @@ function ExerciseForm({exercise,onSubmit}) {
         if (formData.name.length > 0 && formData.description.length > 0 && formData.video.includes("v=")) {
             
             exercise ? onSubmit(exercise,formData) : onSubmit(formData)
-            setFormData(initialState)
+            if (!exercise) setFormData(initialState)
         }
     }
     return (
@@ -45,7 +53,7 @@ function ExerciseForm({exercise,onSubmit}) {
             </div>
             <div className="form-group m-2">
                 
-                <select className="form-select" onChange={handleChange} name="type">
+                <select className="form-select" onChange={handleChange} name="type" value={formData.type}>
                     <option value="Strength Training">Strength Training</option>
                     <option value="Aerobic">Aerobic</option>
                     <option value="Stretch">Stretch</option>

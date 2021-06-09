@@ -18,7 +18,7 @@ function ExerciseModal({exercise,closeModal,handleEditExercise}) {
                 </div>
                 <div className="modal-footer">
                     <h6 className="modal-subtitle">Edit Exercise</h6>
-                    <ExerciseForm exercise={exercise} onSubmit={handleEditExercise}/>
+                    <ExerciseForm exercise={exercise} onSubmit={handleEditExercise} />
                     <button type="button" onClick={closeModal} className="btn btn-secondary">Close</button>
                 </div>
                 </div>

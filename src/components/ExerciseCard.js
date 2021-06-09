@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ExerciseModal from "./ExerciseModal"
-
+import "./ExerciseCard.css"
 
 function ExerciseCard({exercise,handleEditExercise}) {
     const [showModal,setShowModal] = useState(false)
@@ -14,7 +14,7 @@ function ExerciseCard({exercise,handleEditExercise}) {
     }
     return (
         <div className="col-3 m-3">
-            <div className="card" onClick={handleCardClick}>
+            <div className="card shadow" onClick={handleCardClick}>
             
                 <div className="card-body">
                     <h5 className="card-title">{exercise.name}</h5>
