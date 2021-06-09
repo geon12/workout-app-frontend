@@ -1,4 +1,5 @@
 import React from "react"
+import ExerciseForm from "./ExerciseForm"
 import './ExerciseModal.css'
 import VideoEmbed from "./VideoEmbed"
 function ExerciseModal({exercise,showModal,closeModal}) {
@@ -16,8 +17,8 @@ function ExerciseModal({exercise,showModal,closeModal}) {
                     <VideoEmbed youtubeLink={exercise.video}/>
                 </div>
                 <div className="modal-footer">
+                    <ExerciseForm />
                     <button type="button" onClick={closeModal} className="btn btn-secondary">Close</button>
-                    <button type="button" className="btn btn-primary">Save changes</button>
                 </div>
                 </div>
             </div>

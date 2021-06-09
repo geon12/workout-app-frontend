@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <Home />
-      <ExerciseContainer exercises={exercises}/>
+      <ExerciseContainer exercises={exercises} setExercises={setExercises}/>
     </div>
   );
 }
