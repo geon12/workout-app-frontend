@@ -1,7 +1,11 @@
-import React from "react"
+import React, {useState} from "react"
 import ExerciseCard from "./ExerciseCard"
+import ExerciseForm from "./ExerciseForm"
 
 function ExerciseContainer({exercises, setExercises}) {
+
+    const [showForm, setShowForm] = useState(false)
+
     function populateCards() {
         return exercises.map((exercise) => <ExerciseCard key={exercise.id} exercise={exercise} handleEditExercise={handleEditExercise}/>)
     }
@@ -27,9 +31,33 @@ function ExerciseContainer({exercises, setExercises}) {
             .catch(console.error)
             
     }
+
+    function handlePostExercise(data) {
+        const configObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+        
+        fetch(`${process.env.REACT_APP_API_URL}/exercises`, configObj)
+            .then(resp => resp.json())
+            .then( (resp) => {
+                setExercises([...exercises,resp])
+            })
+            .catch(console.error)
+    }
+
+    function handleButtonClick() {
+        setShowForm(prevState => !prevState)
+    }
     return (
         <div className="row justify-content-center">
-            
+            {showForm ? <ExerciseForm onSubmit={handlePostExercise} /> : null}
+            <div className="m-2">
+                <button className="btn btn-primary" onClick={handleButtonClick}>{showForm ? "Close Form" : "Add an Exercise"}</button>
+            </div>
             {populateCards()}
         </div>
     )

@@ -72,7 +72,7 @@ function ExerciseForm({exercise,onSubmit}) {
                 /> 
                 <small id="videoHelp" className="form-text text-muted">Input a YouTube link (Ex. https://www.youtube.com/watch?v=dQw4w9WgXcQ)</small>
             </div>
-            <button type="submit" className="btn btn-primary">Edit Changes</button>
+            <button type="submit" className="btn btn-primary">Save Changes</button>
         </form>
     )
 }
