@@ -8,7 +8,7 @@ function VideoEmbed({youtubeLink}) {
         if(endIndex !== -1) {
             youtubeId = youtubeId.slice(0, endIndex);
         }
-        
+        return youtubeId
     }
 
 
