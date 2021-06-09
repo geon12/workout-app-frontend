@@ -1,5 +1,6 @@
 import React from "react"
 import './ExerciseModal.css'
+import VideoEmbed from "./VideoEmbed"
 function ExerciseModal({exercise,showModal,closeModal}) {
 
     return (
@@ -7,11 +8,12 @@ function ExerciseModal({exercise,showModal,closeModal}) {
             <div className="modal-dialog">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title">Modal title</h5>
+                    <h5 className="modal-title">{exercise.name}</h5>
                     <button type="button" className="btn-close" aria-label="Close" onClick={closeModal}></button>
                 </div>
                 <div className="modal-body">
-                    <p>Modal body text goes here.</p>
+                    <p>{exercise.description}</p>
+                    <VideoEmbed youtubeLink={exercise.video}/>
                 </div>
                 <div className="modal-footer">
                     <button type="button" onClick={closeModal} className="btn btn-secondary">Close</button>
