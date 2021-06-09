@@ -11,8 +11,17 @@ function WorkoutContainer() {
             .then(setWorkouts)
     },[])
 
+    function deleteCard(id) {
+        fetch(`${process.env.REACT_APP_API_URL}/workouts/${id}`)
+            .then(resp => resp.json())
+            .then(() => {
+                const updatedWorkouts = workouts.filter((workout) => workout.id !== id)
+                setWorkouts(updatedWorkouts)
+            })
+    }
+
     function populateWorkoutCards() {
-        return workouts.map((workout) => <WorkoutCard key={workout.id} workout={workout}/>)
+        return workouts.map((workout) => <WorkoutCard key={workout.id} workout={workout} deleteCard={deleteCard}/>)
     }
 
     return(
