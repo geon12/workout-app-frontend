@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import ExerciseContainer from './components/ExerciseContainer';
+import ExerciseContainer from './components/exerciseComponents/ExerciseContainer';
 import Home from './components/Home';
 
 
