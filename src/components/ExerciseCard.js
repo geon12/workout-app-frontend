@@ -2,7 +2,7 @@ import { useState } from "react"
 import ExerciseModal from "./ExerciseModal"
 
 
-function ExerciseCard({exercise}) {
+function ExerciseCard({exercise,handleEditExercise}) {
     const [showModal,setShowModal] = useState(false)
 
     function handleCardClick() {
@@ -22,7 +22,7 @@ function ExerciseCard({exercise}) {
                     
                 </div>
             </div>
-            <ExerciseModal exercise={exercise} showModal={showModal} closeModal={closeModal}/>
+            <ExerciseModal exercise={exercise} showModal={showModal} closeModal={closeModal} handleEditExercise={handleEditExercise}/>
         </div>
     )
 }
