@@ -3,7 +3,7 @@ import ExerciseCard from "./ExerciseCard"
 
 function ExerciseContainer({exercises}) {
     function populateCards() {
-        return exercises.map((exercise) => <ExerciseCard exercise={exercise}/>)
+        return exercises.map((exercise) => <ExerciseCard key={exercise.id} exercise={exercise}/>)
     }
     return (
         <div className="row justify-content-center">
