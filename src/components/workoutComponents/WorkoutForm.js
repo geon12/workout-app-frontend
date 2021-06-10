@@ -10,8 +10,9 @@ function WorkoutForm({exercises}) {
     }
 
     const [formData, setFormData] = useState(initialState)
-    const [chosenExercise,setChosenExercise] = useState(exercises[0])
-    const [typeFilter,setTypeFilter] = useState("All")
+    const [chosenExercise, setChosenExercise] = useState(1)
+    const [exerciseLength, setExerciseLength] = useState("")
+    const [typeFilter, setTypeFilter] = useState("All")
 
     function populateFormOptions(exercises) {
         const filteredExercises = filterByType(exercises)
@@ -28,6 +29,15 @@ function WorkoutForm({exercises}) {
         })
     }
 
+    function handleExerciseLengthChange(event) {
+        setExerciseLength(event.target.value)
+    }
+
+    function handleExerciseChange(event) {
+        
+        setChosenExercise(event.target.value)
+    }
+
     function handleRadioChange(event) {
 
         if (event.target.checked) {
@@ -36,14 +46,29 @@ function WorkoutForm({exercises}) {
         }
     }
 
+    function addExerciseClick(event) {
+        event.preventDefault()
+        const newExercises = [...formData.exercises]
+        const exerciseId = parseInt(chosenExercise,10)
+        const length = parseInt(exerciseLength,10)
+        setFormData({...formData, exercises: [...newExercises,{"exercise-id": exerciseId,length: length}] })
+        setChosenExercise(1)
+        setExerciseLength("")
+    }
+
     function filterByType(exercises) {
         return exercises.filter((exercise) => {
             if (typeFilter === "All") return true
             return typeFilter === exercise.type
         })
     }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        // console.log(formData)
+    }
     return (
-        <form onSubmit={null}>
+        <form onSubmit={handleSubmit}>
             <div className="form-group m-2">
                 <input 
                     type="text" 
@@ -65,11 +90,22 @@ function WorkoutForm({exercises}) {
             </div>
             <div className="form-group m-2">
                 <WorkoutFormRadio handleRadioChange={handleRadioChange}/>
-                <select className="form-select" onChange={null} name="type" value={chosenExercise}>
+                <select className="form-select" onChange={handleExerciseChange} name="type" value={chosenExercise}>
                     {populateFormOptions(exercises)}
                 </select>
-
-                <button className="btn btn-secondary">Add Exercise</button>
+                <div className="form-group m-2">
+                    <input 
+                        type="number" 
+                        className="form-control" 
+                        name="length" 
+                        placeholder="Exercise Length (minutes)" 
+                        pattern="[0-9]*" 
+                        inputMode="numeric"
+                        value={exerciseLength} 
+                        onChange={handleExerciseLengthChange}
+                    />
+                </div>
+                <button className="btn btn-secondary m-2" onClick={addExerciseClick}>Add Exercise</button>
             </div>
             <button type="submit" className="btn btn-primary">Save Workout</button>
         </form>
