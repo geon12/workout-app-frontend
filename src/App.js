@@ -3,6 +3,7 @@ import './App.css';
 import ExerciseContainer from './components/exerciseComponents/ExerciseContainer';
 import Home from './components/Home';
 import WorkoutContainer from './components/workoutComponents/WorkoutContainer';
+import WorkoutCreator from './components/workoutComponents/WorkoutCreator';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Home />
       <ExerciseContainer exercises={exercises} setExercises={setExercises}/>
       <WorkoutContainer />
+      <WorkoutCreator exercises={exercises}/>
     </div>
   );
 }
