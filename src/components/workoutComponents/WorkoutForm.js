@@ -1,7 +1,7 @@
 import {useState} from "react"
 import WorkoutFormRadio from "./WorkoutFormRadio"
 
-function WorkoutForm({exercises}) {
+function WorkoutForm({exercises,postWorkout}) {
 
     const initialState =  {
         name: "",
@@ -66,6 +66,7 @@ function WorkoutForm({exercises}) {
     function handleSubmit(event) {
         event.preventDefault()
         // console.log(formData)
+        postWorkout(formData)
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -77,6 +78,7 @@ function WorkoutForm({exercises}) {
                     placeholder="Name" 
                     value={formData.name} 
                     onChange={handleChange}
+                    required
                 />
             </div>
             <div className="form-group m-2">
@@ -86,6 +88,7 @@ function WorkoutForm({exercises}) {
                     placeholder="Description" 
                     onChange={handleChange}
                     value={formData.description}
+                    required
                 />
             </div>
             <div className="form-group m-2">

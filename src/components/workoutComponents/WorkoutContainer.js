@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react"
 import WorkoutCard from "./WorkoutCard"
 
-function WorkoutContainer() {
-
-    const [workouts,setWorkouts] = useState([])
-
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/workouts`)
-            .then(resp => resp.json())
-            .then(setWorkouts)
-    },[])
+function WorkoutContainer({workouts,setWorkouts}) {
 
     function deleteCard(id) {
-        fetch(`${process.env.REACT_APP_API_URL}/workouts/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/workouts/${id}`,{method: 'DELETE'})
             .then(resp => resp.json())
             .then(() => {
                 const updatedWorkouts = workouts.filter((workout) => workout.id !== id)
                 setWorkouts(updatedWorkouts)
             })
+            .catch(console.error)
     }
 
     function populateWorkoutCards() {
