@@ -1,5 +1,6 @@
 import {useState} from "react"
 import WorkoutFormRadio from "./WorkoutFormRadio"
+import AddedExerciseContainer from "./AddedExerciseContainer"
 
 function WorkoutForm({exercises,postWorkout}) {
 
@@ -112,6 +113,7 @@ function WorkoutForm({exercises,postWorkout}) {
                 </div>
                 <button className="btn btn-secondary m-2" onClick={addExerciseClick}>Add Exercise</button>
             </div>
+            <AddedExerciseContainer addedExercises={formData.exercises}/>
             <button type="submit" className="btn btn-primary">Save Workout</button>
         </form>
     )
