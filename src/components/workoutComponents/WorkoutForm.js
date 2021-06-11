@@ -11,12 +11,13 @@ function WorkoutForm({exercises,postWorkout}) {
     }
 
     const [formData, setFormData] = useState(initialState)
-    const [chosenExercise, setChosenExercise] = useState(1)
+    const [chosenExercise, setChosenExercise] = useState("")
     const [exerciseLength, setExerciseLength] = useState("")
     const [typeFilter, setTypeFilter] = useState("All")
 
     function populateFormOptions(exercises) {
         const filteredExercises = filterByType(exercises)
+        
         return filteredExercises.map((exercise) => <option key={exercise.id} value={exercise.id}>{exercise.name}</option>)
     }
 
@@ -49,14 +50,16 @@ function WorkoutForm({exercises,postWorkout}) {
 
     function addExerciseClick(event) {
         event.preventDefault()
-        const newExercises = [...formData.exercises]
-        const exerciseId = parseInt(chosenExercise,10)
-        const length = parseInt(exerciseLength,10)
-        if (length) {
-            setFormData({...formData, exercises: [...newExercises,{"exercise-id": exerciseId,length: length}] })
+        if (chosenExercise !== "") {
+            const newExercises = [...formData.exercises]
+            const exerciseId = parseInt(chosenExercise,10)
+            const length = parseInt(exerciseLength,10)
+            if (length) {
+                setFormData({...formData, exercises: [...newExercises,{"exercise-id": exerciseId,length: length}] })
+            }
+            setChosenExercise("")
+            setExerciseLength("")
         }
-        setChosenExercise(1)
-        setExerciseLength("")
     }
 
     function filterByType(exercises) {
@@ -70,6 +73,7 @@ function WorkoutForm({exercises,postWorkout}) {
         event.preventDefault()
         // console.log(formData)
         postWorkout(formData)
+        setFormData(initialState)
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -97,6 +101,7 @@ function WorkoutForm({exercises,postWorkout}) {
             <div className="form-group m-2">
                 <WorkoutFormRadio handleRadioChange={handleRadioChange}/>
                 <select className="form-select" onChange={handleExerciseChange} name="type" value={chosenExercise}>
+                    <option value="">Select Exercise</option>
                     {populateFormOptions(exercises)}
                 </select>
                 <div className="form-group m-2">
@@ -113,7 +118,7 @@ function WorkoutForm({exercises,postWorkout}) {
                 </div>
                 <button className="btn btn-secondary m-2" onClick={addExerciseClick}>Add Exercise</button>
             </div>
-            <AddedExerciseContainer addedExercises={formData.exercises}/>
+            <AddedExerciseContainer addedExercises={formData.exercises} exercises={exercises}/>
             <button type="submit" className="btn btn-primary">Save Workout</button>
         </form>
     )

@@ -1,8 +1,12 @@
 import AddedExerciseCard from "./AddedExerciseCard"
+import { v4 as uuidv4 } from 'uuid'
 
-function AddedExerciseContainer({addedExercises}) {
+function AddedExerciseContainer({addedExercises,exercises}) {
     function populateAddedExercises() {
-        return addedExercises.map( (addedExercise) => <AddedExerciseCard addedExercise={addedExercise}/>)
+        return addedExercises.map( (addedExercise) => {
+            const exercise = exercises.find((exercise) => exercise.id ===addedExercise["exercise-id"])
+            return <AddedExerciseCard key={uuidv4()} addedExercise={addedExercise} exercise={exercise}/>
+        })
     }
     return (
         <div>

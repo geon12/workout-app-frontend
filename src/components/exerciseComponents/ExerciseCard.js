@@ -14,7 +14,7 @@ function ExerciseCard({exercise,handleEditExercise}) {
     }
     return (
         <div className="col-3 m-3">
-            <div className="card shadow" onClick={handleCardClick}>
+            <div className="card highlight shadow" onClick={handleCardClick}>
             
                 <div className="card-body">
                     <h5 className="card-title">{exercise.name}</h5>
