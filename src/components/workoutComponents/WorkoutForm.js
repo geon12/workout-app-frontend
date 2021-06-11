@@ -51,7 +51,9 @@ function WorkoutForm({exercises,postWorkout}) {
         const newExercises = [...formData.exercises]
         const exerciseId = parseInt(chosenExercise,10)
         const length = parseInt(exerciseLength,10)
-        setFormData({...formData, exercises: [...newExercises,{"exercise-id": exerciseId,length: length}] })
+        if (length) {
+            setFormData({...formData, exercises: [...newExercises,{"exercise-id": exerciseId,length: length}] })
+        }
         setChosenExercise(1)
         setExerciseLength("")
     }
