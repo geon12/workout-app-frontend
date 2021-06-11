@@ -7,8 +7,8 @@ import WorkoutCreator from './components/workoutComponents/WorkoutCreator';
 
 
 function App() {
-  const [exercises,setExercises] = useState([])
-  const [workouts,setWorkouts] = useState([])
+  const [exercises,setExercises] = useState(null)
+  const [workouts,setWorkouts] = useState(null)
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/exercises`)
@@ -17,13 +17,19 @@ function App() {
     fetch(`${process.env.REACT_APP_API_URL}/workouts`)
       .then(resp => resp.json())
       .then(setWorkouts)
+
   },[])
+
+  function nullCheck(condition,component) {
+    return condition ? component : <div>Page is Loading</div>
+  }
   return (
     <div>
       <Home />
-      <ExerciseContainer exercises={exercises} setExercises={setExercises}/>
-      <WorkoutContainer workouts={workouts} setWorkouts={setWorkouts}/>
-      <WorkoutCreator exercises={exercises} workouts={workouts} setWorkouts={setWorkouts}/>
+      {nullCheck(exercises !== null, <ExerciseContainer exercises={exercises} setExercises={setExercises}/>)}
+      {nullCheck(workouts !== null, <WorkoutContainer workouts={workouts} setWorkouts={setWorkouts}/>)}
+      {nullCheck(workouts !== null && exercises !== null, 
+      <WorkoutCreator exercises={exercises} workouts={workouts} setWorkouts={setWorkouts}/>)}
     </div>
   );
 }
