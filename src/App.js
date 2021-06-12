@@ -13,6 +13,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -80,7 +81,7 @@ function App() {
               <Workout exercises={exercises} handleEditWorkout={handleEditWorkout}/>)}
           </Route>
           <Route path="*">
-            <h1>404 Page Not Found</h1>
+            <NotFound />
           </Route>
         </Switch>
       </Router>
