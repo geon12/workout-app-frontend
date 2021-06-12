@@ -4,7 +4,15 @@ import ExerciseContainer from './components/exerciseComponents/ExerciseContainer
 import Home from './components/Home';
 import WorkoutContainer from './components/workoutComponents/WorkoutContainer';
 import WorkoutCreator from './components/workoutComponents/WorkoutCreator';
-import WorkoutPages from './components/workoutComponents/WorkoutPages';
+//import WorkoutPages from './components/workoutComponents/WorkoutPages';
+import Workout from './components/workoutComponents/Workout';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function App() {
@@ -25,18 +33,57 @@ function App() {
     return condition ? component : <div>Page is Loading</div>
   }
 
+  function handleEditWorkout(workout,data) {
+    const configObj = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }
+    
+    fetch(`${process.env.REACT_APP_API_URL}/workouts/${workout.id}`, configObj)
+        .then(resp => resp.json())
+        .then( (resp) => {
+            const updatedWorkouts = workouts.map((workout) => {
+                if (workout.id === resp.id) return resp
+                return workout
+            })
+            setWorkouts(updatedWorkouts)
+        })
+        .catch(console.error)
+        
+  }
+
   
   return (
     <div>
-      <Home />
-      {nullCheck(exercises !== null, 
-        <ExerciseContainer exercises={exercises} setExercises={setExercises}/>)}
-      {nullCheck(workouts !== null, 
-        <WorkoutContainer workouts={workouts} setWorkouts={setWorkouts}/>)}
-      {nullCheck(workouts !== null && exercises !== null, 
-        <WorkoutCreator exercises={exercises} workouts={workouts} setWorkouts={setWorkouts}/>)}
-      {nullCheck(workouts !== null && exercises !== null, 
-        <WorkoutPages workouts={workouts} exercises={exercises} setWorkouts={setWorkouts}/>)}
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/exercises'>
+            {nullCheck(exercises !== null, 
+              <ExerciseContainer exercises={exercises} setExercises={setExercises}/>)}
+          </Route>
+          <Route exact path='/workouts'>
+            {nullCheck(workouts !== null, 
+              <WorkoutContainer workouts={workouts} setWorkouts={setWorkouts}/>)}
+          </Route>
+          <Route exact path='/workoutcreator'>
+            {nullCheck(workouts !== null && exercises !== null, 
+              <WorkoutCreator exercises={exercises} workouts={workouts} setWorkouts={setWorkouts}/>)}
+          </Route>
+          <Route exact path='/workouts/:id'>
+            {nullCheck(workouts !== null && exercises !== null, 
+              <Workout exercises={exercises} handleEditWorkout={handleEditWorkout}/>)}
+          </Route>
+          <Route path="*">
+            <h1>404 Page Not Found</h1>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
