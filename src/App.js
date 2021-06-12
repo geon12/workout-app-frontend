@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import ExerciseContainer from './components/exerciseComponents/ExerciseContainer';
 import Home from './components/Home';
-import Workout from './components/workoutComponents/Workout';
 import WorkoutContainer from './components/workoutComponents/WorkoutContainer';
 import WorkoutCreator from './components/workoutComponents/WorkoutCreator';
 import WorkoutPages from './components/workoutComponents/WorkoutPages';
@@ -37,7 +36,7 @@ function App() {
       {nullCheck(workouts !== null && exercises !== null, 
         <WorkoutCreator exercises={exercises} workouts={workouts} setWorkouts={setWorkouts}/>)}
       {nullCheck(workouts !== null && exercises !== null, 
-        <WorkoutPages workouts={workouts} exercises={exercises}/>)}
+        <WorkoutPages workouts={workouts} exercises={exercises} setWorkouts={setWorkouts}/>)}
     </div>
   );
 }
