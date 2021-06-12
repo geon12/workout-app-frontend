@@ -54,6 +54,7 @@ function ExerciseContainer({exercises, setExercises}) {
     }
     return (
         <div className="row justify-content-center">
+            <h1>Explore different Exercises</h1>
             {showForm ? <ExerciseForm onSubmit={handlePostExercise} /> : null}
             <div className="m-2">
                 <button className="btn btn-primary" onClick={handleButtonClick}>{showForm ? "Close Form" : "Add an Exercise"}</button>
