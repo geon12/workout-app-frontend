@@ -7,7 +7,7 @@ function AddedExerciseCard({addedExercise,exercise}) {
                     <h5 className="card-title">{exercise.name}</h5>
                     <h6 className="card-subtitle">{exercise.type}</h6>
                     <h6 className="card-subtitle">{addedExercise.length} minutes</h6>
-                    <button className="btn btn-primary">Remove</button>
+                    {/* <button className="btn btn-primary">Remove</button> */}
                 </div>
             </div>
             
