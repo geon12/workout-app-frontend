@@ -4,16 +4,17 @@ import ExerciseContainer from './components/exerciseComponents/ExerciseContainer
 import Home from './components/Home';
 import WorkoutContainer from './components/workoutComponents/WorkoutContainer';
 import WorkoutCreator from './components/workoutComponents/WorkoutCreator';
-//import WorkoutPages from './components/workoutComponents/WorkoutPages';
 import Workout from './components/workoutComponents/Workout';
+import NotFound from './components/NotFound';
+import NavBar from './components/NavBar';
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import NotFound from './components/NotFound';
+
+
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
   return (
     <div>
       <Router>
+        <NavBar />
         <Switch>
           <Route exact path='/'>
             <Home />
