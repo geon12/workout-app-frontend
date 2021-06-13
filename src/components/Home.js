@@ -7,9 +7,9 @@ function Home() {
             <h2 className="display-3 text-muted mx-4">Create Workouts and Exercises</h2>
             <ul className="list-group">
                 <li className="list-group-item m-4 h3">Explore different exercises and activities</li>
-                <li className="list-group-item m-4 h3">Add new exercises</li>
-                <li className="list-group-item m-4 h3">Exercise to premade workout routines</li>
-                <li className="list-group-item m-4 h3">Create your own Workout</li>
+                <li className="list-group-item m-4 h3 text-primary">Add new exercises</li>
+                <li className="list-group-item m-4 h3 text-muted">Exercise to premade workout routines</li>
+                <li className="list-group-item m-4 h3 text-danger">Create your own Workout</li>
             </ul>
         </div>
     )

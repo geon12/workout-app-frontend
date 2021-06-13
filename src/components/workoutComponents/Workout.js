@@ -47,10 +47,10 @@ function Workout({exercises, workouts, setWorkouts}) {
       }
     return (
         <div>
-            <h1>{workout.name}</h1>
-            <p>{workout.description}</p>
+            <h1 className="display-4 text-center">{workout.name}</h1>
+            <p className="mx-5 my-3 h6 text-center">{workout.description}</p>
             {showEditForm? <WorkoutEditForm workout={workout} handleEditWorkout={handleEditWorkout}/>: null}
-            <div className="m-2">
+            <div className="m-3 d-flex justify-content-center">
                 <button className="btn btn-primary" onClick={handleButtonClick}>{showEditForm ? "Close Form" : "Edit Workout"}</button>
             </div>
             <AddedExerciseContainer addedExercises={workout.exercises} exercises={exercises} />

@@ -1,13 +1,12 @@
 function AddedExerciseCard({addedExercise,exercise}) {
     return (
-        <div className="row">
+        <div className="row text-center my-1 mx-5">
             <div className="card shadow">
             
                 <div className="card-body">
-                    <h5 className="card-title">{exercise.name}</h5>
-                    <h6 className="card-subtitle">{exercise.type}</h6>
-                    <h6 className="card-subtitle">{addedExercise.length} minutes</h6>
-                    {/* <button className="btn btn-primary">Remove</button> */}
+                    <h4 className="card-title text-primary">{exercise.name}</h4>
+                    <h6 className="card-subtitle my-1 text-secondary">{exercise.type}</h6>
+                    <h6 className="card-subtitle my-1 text-danger">{addedExercise.length} minutes</h6>
                 </div>
             </div>
             
