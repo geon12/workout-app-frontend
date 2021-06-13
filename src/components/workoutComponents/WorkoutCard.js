@@ -14,7 +14,7 @@ function WorkoutCard({workout,deleteCard}) {
             
                 <div className="card-body">
                     <h5 className="card-title">{workout.name}</h5>
-                    <p className="card-text">{workout.description}.</p>
+                    <p className="card-text">{workout.description}</p>
                     <Link className="btn btn-primary mx-5" to={`/workouts/${workout.id}`}>
                         More Info
                     </Link>
