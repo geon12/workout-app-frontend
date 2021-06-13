@@ -77,7 +77,7 @@ function WorkoutForm({exercises,postWorkout}) {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <div className="form-group m-2">
+            <div className="form-group my-2 mx-4">
                 <input 
                     type="text" 
                     className="form-control" 
@@ -88,7 +88,7 @@ function WorkoutForm({exercises,postWorkout}) {
                     required
                 />
             </div>
-            <div className="form-group m-2">
+            <div className="form-group my-2 mx-4">
                 <textarea 
                     className="form-control" 
                     name="description" 
@@ -98,13 +98,13 @@ function WorkoutForm({exercises,postWorkout}) {
                     required
                 />
             </div>
-            <div className="form-group m-2">
+            <div className="form-group my-2 mx-4">
                 <WorkoutFormRadio handleRadioChange={handleRadioChange}/>
                 <select className="form-select" onChange={handleExerciseChange} name="type" value={chosenExercise}>
                     <option value="">Select Exercise</option>
                     {populateFormOptions(exercises)}
                 </select>
-                <div className="form-group m-2">
+                <div className="form-group my-2 mx-4">
                     <input 
                         type="number" 
                         className="form-control" 
@@ -116,10 +116,10 @@ function WorkoutForm({exercises,postWorkout}) {
                         onChange={handleExerciseLengthChange}
                     />
                 </div>
-                <button className="btn btn-secondary m-2" onClick={addExerciseClick}>Add Exercise</button>
+                <button className="btn btn-secondary my-2 mx-4" onClick={addExerciseClick}>Add Exercise</button>
             </div>
             <AddedExerciseContainer addedExercises={formData.exercises} exercises={exercises}/>
-            <button type="submit" className="btn btn-primary">Save Workout</button>
+            <button type="submit" className="btn btn-primary my-1 mx-5">Save Workout</button>
         </form>
     )
 }

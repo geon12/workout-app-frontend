@@ -19,7 +19,7 @@ function WorkoutCreator({exercises,workouts,setWorkouts}) {
     }
     return (
         <div>
-            <h1>Create a Workout</h1>
+            <h1 className="display-3 text-center">Create a Workout</h1>
             <WorkoutForm exercises={exercises} postWorkout={postWorkout}/>
         </div>
     )

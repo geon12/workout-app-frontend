@@ -25,7 +25,7 @@ function WorkoutEditForm({workout,handleEditWorkout}) {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <div className="form-group m-2">
+            <div className="form-group my-2 mx-4">
                 <input 
                     type="text" 
                     className="form-control" 
@@ -36,7 +36,7 @@ function WorkoutEditForm({workout,handleEditWorkout}) {
                     required
                 />
             </div>
-            <div className="form-group m-2">
+            <div className="form-group my-2 mx-4">
                 <textarea 
                     className="form-control" 
                     name="description" 
@@ -46,7 +46,7 @@ function WorkoutEditForm({workout,handleEditWorkout}) {
                     required
                 />
             </div>
-            <button type="submit" className="btn btn-primary">Save Changes</button>
+            <button type="submit" className="btn btn-primary mx-5 my-2">Save Changes</button>
         </form>
     )
 }
