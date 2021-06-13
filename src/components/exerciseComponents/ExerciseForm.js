@@ -40,8 +40,8 @@ function ExerciseForm({exercise,onSubmit}) {
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="form-group m-2">
+        <form className="m-1" onSubmit={handleSubmit}>
+            <div className="form-group mx-4 my-2">
                 <input 
                     type="text" 
                     className="form-control" 
@@ -51,7 +51,7 @@ function ExerciseForm({exercise,onSubmit}) {
                     onChange={handleChange}
                 />
             </div>
-            <div className="form-group m-2">
+            <div className="form-group mx-4 my-2">
                 
                 <select className="form-select" onChange={handleChange} name="type" value={formData.type}>
                     <option value="Strength Training">Strength Training</option>
@@ -59,7 +59,7 @@ function ExerciseForm({exercise,onSubmit}) {
                     <option value="Stretch">Stretch</option>
                 </select>
             </div>
-            <div className="form-group m-2">
+            <div className="form-group mx-4 my-2">
                 <textarea 
                     className="form-control" 
                     name="description" 
@@ -68,7 +68,7 @@ function ExerciseForm({exercise,onSubmit}) {
                     value={formData.description}
                 />
             </div>
-            <div className="form-group m-2">
+            <div className="form-group mx-4 my-2">
                 <input 
                     type="text" 
                     name="video" 
@@ -80,7 +80,7 @@ function ExerciseForm({exercise,onSubmit}) {
                 /> 
                 <small id="videoHelp" className="form-text text-muted">Input a YouTube link (Ex. https://www.youtube.com/watch?v=dQw4w9WgXcQ)</small>
             </div>
-            <button type="submit" className="btn btn-primary">Save Changes</button>
+            <button type="submit" className="btn btn-primary mx-4">Save Changes</button>
         </form>
     )
 }

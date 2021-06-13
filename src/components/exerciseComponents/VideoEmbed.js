@@ -13,7 +13,7 @@ function VideoEmbed({youtubeLink}) {
 
 
     return (
-        <div>
+        <div className="d-flex justify-content-center">
             <iframe
             src={`https://www.youtube.com/embed/${getYoutubeId()}`}
             frameBorder="0"
