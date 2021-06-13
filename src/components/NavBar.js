@@ -9,7 +9,7 @@ function NavBar() {
       }
     
     return (
-        <nav className="row navbar">
+        <nav className="row navbar mx-1">
             <ul>
                 <li>
                     <NavLink exact to='/' activeStyle={activeStyle}>Home</NavLink>

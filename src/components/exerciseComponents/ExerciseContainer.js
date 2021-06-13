@@ -54,7 +54,7 @@ function ExerciseContainer({exercises, setExercises}) {
     }
     return (
         <div className="row justify-content-center">
-            <h1 className="text-center">Explore Exercises</h1>
+            <h1 className="display-2 text-center">Explore Exercises</h1>
             {showForm ? <ExerciseForm onSubmit={handlePostExercise} /> : null}
             <div className="d-flex justify-content-center m-2">
                 <button className="btn btn-primary" onClick={handleButtonClick}>{showForm ? "Close Form" : "Add an Exercise"}</button>

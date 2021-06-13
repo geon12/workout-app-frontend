@@ -9,16 +9,16 @@ function WorkoutCard({workout,deleteCard}) {
 
     
     return (
-        <div className="col-8 m-3">
+        <div className="col-8 m-3 d-flex justify-content-center">
             <div className="card shadow">
             
                 <div className="card-body">
                     <h5 className="card-title">{workout.name}</h5>
                     <p className="card-text">{workout.description}.</p>
-                    <Link className="btn btn-primary" to={`/workouts/${workout.id}`}>
+                    <Link className="btn btn-primary mx-5" to={`/workouts/${workout.id}`}>
                         More Info
                     </Link>
-                    <button onClick={handleDeleteCard} className="btn btn-primary">Delete</button>
+                    <button onClick={handleDeleteCard} className="btn btn-secondary mx-5">Delete</button>
                     
                 </div>
             </div>

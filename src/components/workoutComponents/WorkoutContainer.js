@@ -20,7 +20,7 @@ function WorkoutContainer({workouts,setWorkouts}) {
 
     return(
         <div className="row justify-content-center">
-            <h1>Workouts for you to Try</h1>
+            <h1 className="display-2 text-center">Workouts for you to Try</h1>
             {populateWorkoutCards()}
         </div>
     )
