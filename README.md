@@ -1,3 +1,9 @@
+# Workout Creator App
+
+Create exercises and workout routines.\
+Works with [JSON Server backend](https://github.com/geon12/json-server-backend)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
