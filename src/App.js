@@ -14,9 +14,6 @@ import {
   Route
 } from "react-router-dom";
 
-
-
-
 function App() {
   const [exercises,setExercises] = useState(null)
   const [workouts,setWorkouts] = useState(null)
@@ -34,29 +31,6 @@ function App() {
   function nullCheck(condition,component) {
     return condition ? component : <div>Page is Loading</div>
   }
-
-  function handleEditWorkout(workout,data) {
-    const configObj = {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }
-    
-    fetch(`${process.env.REACT_APP_API_URL}/workouts/${workout.id}`, configObj)
-        .then(resp => resp.json())
-        .then( (resp) => {
-            const updatedWorkouts = workouts.map((workout) => {
-                if (workout.id === resp.id) return resp
-                return workout
-            })
-            setWorkouts(updatedWorkouts)
-        })
-        .catch(console.error)
-        
-  }
-
   
   return (
     <div>
@@ -80,7 +54,7 @@ function App() {
           </Route>
           <Route exact path='/workouts/:id'>
             {nullCheck(workouts !== null && exercises !== null, 
-              <Workout exercises={exercises} handleEditWorkout={handleEditWorkout}/>)}
+              <Workout exercises={exercises} workouts={workouts} setWorkouts={setWorkouts}/>)}
           </Route>
           <Route path="*">
             <NotFound />

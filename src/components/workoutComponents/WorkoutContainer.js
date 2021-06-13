@@ -1,5 +1,4 @@
 import WorkoutCard from "./WorkoutCard"
-import {Link} from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'
 import "./WorkoutContainer.css"
 
@@ -16,14 +15,7 @@ function WorkoutContainer({workouts,setWorkouts}) {
     }
 
     function populateWorkoutCards() {
-        return workouts.map((workout) => {
-            
-            return (
-                <Link className="nostyle" key={uuidv4()} to={`/workouts/${workout.id}`}>
-                    <WorkoutCard workout={workout} deleteCard={deleteCard}/>
-                </Link>
-            )
-        })
+        return workouts.map((workout) => <WorkoutCard key={uuidv4()} workout={workout} deleteCard={deleteCard}/>)
     }
 
     return(

@@ -22,7 +22,6 @@ function WorkoutEditForm({workout,handleEditWorkout}) {
     function handleSubmit(event) {
         event.preventDefault()
         handleEditWorkout(workout,formData)
-        
     }
     return (
         <form onSubmit={handleSubmit}>

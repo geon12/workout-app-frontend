@@ -3,7 +3,7 @@ import AddedExerciseContainer from './AddedExerciseContainer'
 import WorkoutEditForm from './WorkoutEditForm'
 import {useParams} from "react-router-dom"
 
-function Workout({exercises, handleEditWorkout}) {
+function Workout({exercises, workouts, setWorkouts}) {
     const [showEditForm, setShowEditForm] = useState(false)
     const [workout, setWorkout] = useState({exercises:[]})
 
@@ -22,7 +22,29 @@ function Workout({exercises, handleEditWorkout}) {
             .catch(console.error)
     }
     ,[id])
-
+    
+    function handleEditWorkout(workout,data) {
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+        
+        fetch(`${process.env.REACT_APP_API_URL}/workouts/${workout.id}`, configObj)
+            .then(resp => resp.json())
+            .then( (resp) => {
+                const updatedWorkouts = workouts.map((workout) => {
+                    if (workout.id === resp.id) return resp
+                    return workout
+                })
+                setWorkouts(updatedWorkouts)
+                setWorkout(resp)
+            })
+            .catch(console.error)
+            
+      }
     return (
         <div>
             <h1>{workout.name}</h1>
